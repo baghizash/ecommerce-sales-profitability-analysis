@@ -1,0 +1,10 @@
+{
+  "raw_rows": 1067371,
+  "dropped_exact_duplicates": 34335,
+  "dropped_cancelled_invoice_C": 19104,
+  "dropped_quantity_le_0": 3393,
+  "dropped_price_le_0": 2626,
+  "clean_rows": 1007913,
+  "rows_missing_customer_id_kept": 228488,
+  "rows_missing_description_kept": 0
+}
