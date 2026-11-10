@@ -1,0 +1,455 @@
+{
+  "dataset": "Online Retail II (UCI Machine Learning Repository)",
+  "currency": "GBP",
+  "revenue_definition": "Revenue = Quantity x Price untuk transaksi non-batal yang valid (lihat README, bagian Cleaning).",
+  "date_range": {
+    "start": "2009-12-01 07:45:00",
+    "end": "2011-12-09 12:50:00"
+  },
+  "total_revenue_gbp": 20476260.43,
+  "total_orders": 40077,
+  "total_customers_identified": 5878,
+  "total_line_items": 1007913,
+  "total_units_sold": 11205148,
+  "average_order_value_gbp": 510.92,
+  "median_order_value_gbp": 302.22,
+  "basket_size_items_per_order_mean": 279.59,
+  "basket_size_items_per_order_median": 146.0,
+  "orders_without_customer_id": 3108,
+  "revenue_without_customer_id_gbp": 3101456.18,
+  "uk_revenue_share_pct": 85.03,
+  "product_ranking_rule": "Ranking produk hanya StockCode yang diawali digit; kode berawalan huruf (POST, DOT, M, BANK CHARGES, AMAZONFEE, gift_*, dll) adalah ongkir/penyesuaian manual/voucher, bukan merchandise.",
+  "largest_single_order": {
+    "invoice": "581483",
+    "revenue_gbp": 168469.6,
+    "items": 80995
+  },
+  "orders_over_10000_gbp": {
+    "orders": 93,
+    "revenue_share_pct": 8.87
+  },
+  "repeat_customers": {
+    "customers_with_2plus_orders": 4255,
+    "share_of_identified_customers_pct": 72.39,
+    "median_orders_per_customer": 3.0
+  },
+  "best_month": {
+    "year_month": "2011-11",
+    "revenue_gbp": 1503866.78,
+    "orders": 2769,
+    "units": 751377,
+    "aov_gbp": 543.11
+  },
+  "monthly_sales": [
+    {
+      "year_month": "2009-12",
+      "revenue_gbp": 822483.95,
+      "orders": 1682,
+      "units": 425461,
+      "aov_gbp": 488.99
+    },
+    {
+      "year_month": "2010-01",
+      "revenue_gbp": 651155.11,
+      "orders": 1105,
+      "units": 390672,
+      "aov_gbp": 589.28
+    },
+    {
+      "year_month": "2010-02",
+      "revenue_gbp": 551504.72,
+      "orders": 1201,
+      "units": 381879,
+      "aov_gbp": 459.2
+    },
+    {
+      "year_month": "2010-03",
+      "revenue_gbp": 830915.26,
+      "orders": 1681,
+      "units": 526026,
+      "aov_gbp": 494.3
+    },
+    {
+      "year_month": "2010-04",
+      "revenue_gbp": 678875.25,
+      "orders": 1462,
+      "units": 366705,
+      "aov_gbp": 464.35
+    },
+    {
+      "year_month": "2010-05",
+      "revenue_gbp": 657705.5,
+      "orders": 1500,
+      "units": 395868,
+      "aov_gbp": 438.47
+    },
+    {
+      "year_month": "2010-06",
+      "revenue_gbp": 749537.31,
+      "orders": 1645,
+      "units": 406820,
+      "aov_gbp": 455.65
+    },
+    {
+      "year_month": "2010-07",
+      "revenue_gbp": 648810.27,
+      "orders": 1529,
+      "units": 337895,
+      "aov_gbp": 424.34
+    },
+    {
+      "year_month": "2010-08",
+      "revenue_gbp": 695251.91,
+      "orders": 1425,
+      "units": 472380,
+      "aov_gbp": 487.9
+    },
+    {
+      "year_month": "2010-09",
+      "revenue_gbp": 921696.99,
+      "orders": 1839,
+      "units": 583864,
+      "aov_gbp": 501.19
+    },
+    {
+      "year_month": "2010-10",
+      "revenue_gbp": 1161902.22,
+      "orders": 2301,
+      "units": 619996,
+      "aov_gbp": 504.96
+    },
+    {
+      "year_month": "2010-11",
+      "revenue_gbp": 1464293.14,
+      "orders": 2747,
+      "units": 725161,
+      "aov_gbp": 533.05
+    },
+    {
+      "year_month": "2010-12",
+      "revenue_gbp": 821452.73,
+      "orders": 1559,
+      "units": 358019,
+      "aov_gbp": 526.91
+    },
+    {
+      "year_month": "2011-01",
+      "revenue_gbp": 689811.61,
+      "orders": 1086,
+      "units": 387099,
+      "aov_gbp": 635.19
+    },
+    {
+      "year_month": "2011-02",
+      "revenue_gbp": 522545.56,
+      "orders": 1100,
+      "units": 282934,
+      "aov_gbp": 475.04
+    },
+    {
+      "year_month": "2011-03",
+      "revenue_gbp": 716215.26,
+      "orders": 1454,
+      "units": 376599,
+      "aov_gbp": 492.58
+    },
+    {
+      "year_month": "2011-04",
+      "revenue_gbp": 536968.49,
+      "orders": 1246,
+      "units": 307953,
+      "aov_gbp": 430.95
+    },
+    {
+      "year_month": "2011-05",
+      "revenue_gbp": 769296.61,
+      "orders": 1681,
+      "units": 395001,
+      "aov_gbp": 457.64
+    },
+    {
+      "year_month": "2011-06",
+      "revenue_gbp": 760547.01,
+      "orders": 1533,
+      "units": 388511,
+      "aov_gbp": 496.12
+    },
+    {
+      "year_month": "2011-07",
+      "revenue_gbp": 718076.12,
+      "orders": 1475,
+      "units": 399693,
+      "aov_gbp": 486.83
+    },
+    {
+      "year_month": "2011-08",
+      "revenue_gbp": 757841.38,
+      "orders": 1361,
+      "units": 421020,
+      "aov_gbp": 556.83
+    },
+    {
+      "year_month": "2011-09",
+      "revenue_gbp": 1056435.19,
+      "orders": 1837,
+      "units": 569573,
+      "aov_gbp": 575.09
+    },
+    {
+      "year_month": "2011-10",
+      "revenue_gbp": 1151263.73,
+      "orders": 2040,
+      "units": 621029,
+      "aov_gbp": 564.34
+    },
+    {
+      "year_month": "2011-11",
+      "revenue_gbp": 1503866.78,
+      "orders": 2769,
+      "units": 751377,
+      "aov_gbp": 543.11
+    },
+    {
+      "year_month": "2011-12",
+      "revenue_gbp": 637808.33,
+      "orders": 819,
+      "units": 313613,
+      "aov_gbp": 778.76
+    }
+  ],
+  "top_countries_excl_uk": [
+    {
+      "country": "EIRE",
+      "revenue_gbp": 658767.31,
+      "orders": 626,
+      "customers": 5,
+      "units": 336329
+    },
+    {
+      "country": "Netherlands",
+      "revenue_gbp": 554038.09,
+      "orders": 228,
+      "customers": 22,
+      "units": 383879
+    },
+    {
+      "country": "Germany",
+      "revenue_gbp": 425019.71,
+      "orders": 789,
+      "customers": 107,
+      "units": 225154
+    },
+    {
+      "country": "France",
+      "revenue_gbp": 350456.09,
+      "orders": 622,
+      "customers": 95,
+      "units": 271901
+    },
+    {
+      "country": "Australia",
+      "revenue_gbp": 169283.46,
+      "orders": 95,
+      "customers": 15,
+      "units": 103759
+    }
+  ],
+  "countries_total": 43,
+  "top10_products_by_revenue": [
+    {
+      "stock_code": "22423",
+      "description": "REGENCY CAKESTAND 3 TIER",
+      "revenue_gbp": 330590.32,
+      "units": 26478,
+      "orders": 3918
+    },
+    {
+      "stock_code": "85123A",
+      "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+      "revenue_gbp": 257724.71,
+      "units": 94203,
+      "orders": 5365
+    },
+    {
+      "stock_code": "85099B",
+      "description": "JUMBO BAG RED RETROSPOT",
+      "revenue_gbp": 180569.34,
+      "units": 96757,
+      "orders": 3989
+    },
+    {
+      "stock_code": "23843",
+      "description": "PAPER CRAFT , LITTLE BIRDIE",
+      "revenue_gbp": 168469.6,
+      "units": 80995,
+      "orders": 1
+    },
+    {
+      "stock_code": "47566",
+      "description": "PARTY BUNTING",
+      "revenue_gbp": 148318.28,
+      "units": 28200,
+      "orders": 2674
+    },
+    {
+      "stock_code": "84879",
+      "description": "ASSORTED COLOUR BIRD ORNAMENT",
+      "revenue_gbp": 129324.49,
+      "units": 80082,
+      "orders": 2807
+    },
+    {
+      "stock_code": "22086",
+      "description": "PAPER CHAIN KIT 50'S CHRISTMAS ",
+      "revenue_gbp": 117760.29,
+      "units": 35084,
+      "orders": 2018
+    },
+    {
+      "stock_code": "23166",
+      "description": "MEDIUM CERAMIC TOP STORAGE JAR",
+      "revenue_gbp": 81700.92,
+      "units": 78033,
+      "orders": 247
+    },
+    {
+      "stock_code": "79321",
+      "description": "CHILLI LIGHTS",
+      "revenue_gbp": 80540.88,
+      "units": 15841,
+      "orders": 1135
+    },
+    {
+      "stock_code": "22197",
+      "description": "SMALL POPCORN HOLDER",
+      "revenue_gbp": 79520.2,
+      "units": 88499,
+      "orders": 2322
+    }
+  ],
+  "top10_revenue_share_pct": 7.69,
+  "peak_hour": {
+    "hour": 12.0,
+    "revenue_gbp": 2850377.67,
+    "orders": 6427.0
+  },
+  "hourly_sales": [
+    {
+      "hour": 6,
+      "revenue_gbp": 4.25,
+      "orders": 1
+    },
+    {
+      "hour": 7,
+      "revenue_gbp": 75765.57,
+      "orders": 77
+    },
+    {
+      "hour": 8,
+      "revenue_gbp": 528185.57,
+      "orders": 998
+    },
+    {
+      "hour": 9,
+      "revenue_gbp": 1769631.03,
+      "orders": 2754
+    },
+    {
+      "hour": 10,
+      "revenue_gbp": 2581131.33,
+      "orders": 4610
+    },
+    {
+      "hour": 11,
+      "revenue_gbp": 2535325.46,
+      "orders": 4903
+    },
+    {
+      "hour": 12,
+      "revenue_gbp": 2850377.67,
+      "orders": 6427
+    },
+    {
+      "hour": 13,
+      "revenue_gbp": 2548467.54,
+      "orders": 5695
+    },
+    {
+      "hour": 14,
+      "revenue_gbp": 2321684.73,
+      "orders": 5071
+    },
+    {
+      "hour": 15,
+      "revenue_gbp": 2394943.79,
+      "orders": 4566
+    },
+    {
+      "hour": 16,
+      "revenue_gbp": 1570143.8,
+      "orders": 2718
+    },
+    {
+      "hour": 17,
+      "revenue_gbp": 861460.13,
+      "orders": 1407
+    },
+    {
+      "hour": 18,
+      "revenue_gbp": 273405.02,
+      "orders": 466
+    },
+    {
+      "hour": 19,
+      "revenue_gbp": 126830.35,
+      "orders": 332
+    },
+    {
+      "hour": 20,
+      "revenue_gbp": 38904.19,
+      "orders": 53
+    }
+  ],
+  "best_weekday_by_orders": {
+    "weekday": "Thursday",
+    "revenue_gbp": 4195212.76,
+    "orders": 8288
+  },
+  "weekday_sales": [
+    {
+      "weekday": "Monday",
+      "revenue_gbp": 3581594.17,
+      "orders": 6351
+    },
+    {
+      "weekday": "Tuesday",
+      "revenue_gbp": 4078149.96,
+      "orders": 7291
+    },
+    {
+      "weekday": "Wednesday",
+      "revenue_gbp": 3488444.33,
+      "orders": 7185
+    },
+    {
+      "weekday": "Thursday",
+      "revenue_gbp": 4195212.76,
+      "orders": 8288
+    },
+    {
+      "weekday": "Friday",
+      "revenue_gbp": 3323908.88,
+      "orders": 6097
+    },
+    {
+      "weekday": "Saturday",
+      "revenue_gbp": 9803.05,
+      "orders": 30
+    },
+    {
+      "weekday": "Sunday",
+      "revenue_gbp": 1799147.28,
+      "orders": 4835
+    }
+  ]
+}
