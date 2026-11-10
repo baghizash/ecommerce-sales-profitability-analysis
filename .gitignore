@@ -1,0 +1,12 @@
+# File database tidak pernah di-push
+*.db
+*.sqlite
+
+# File mentah dan data bersih level baris terlalu besar untuk GitHub
+# (xlsx mentah 44 MB, clean CSV 93,2 MB) - keduanya dibuat ulang dari
+# sumber resmi UCI dengan scripts/clean_data.py, lihat data/SOURCES.md
+*.xlsx
+data/online_retail_ii_clean.csv
+
+__pycache__/
+*.pyc
