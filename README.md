@@ -9,9 +9,11 @@ Repository (1.067.371 baris transaksi mentah).
 > diunduh langsung dari arsip resmi UCI pada 8 November 2026. Detail file,
 > sitasi, dan lisensi ada di `data/SOURCES.md`.
 >
-> **Status:** Tahap 1 dari 3. Tahap ini berisi data bersih, hitungan terverifikasi,
-> query SQL, dan temuan awal. Notebook lengkap dan chart menyusul di Tahap 2;
-> kit Power BI, deck presentasi, dan modul menyusul di Tahap 3.
+> **Status:** Selesai, 3 dari 3 tahap. Tahap 1: data bersih, hitungan
+> terverifikasi, query SQL, dan temuan awal. Tahap 2: notebook analisis lengkap
+> (`analysis.ipynb`, 24 cell) dengan 12 chart. Tahap 3: kit Power BI
+> (star schema + 13 measure DAX + panduan 4 halaman), deck presentasi
+> 10 slide, dan modul belajar 5 halaman.
 >
 > **Catatan karakter bisnis:** menurut deskripsi resmi UCI, banyak customer
 > perusahaan ini adalah wholesaler. Itu menjelaskan average order value dan
@@ -124,6 +126,9 @@ Verifikasi). Angka lengkap ada di `findings.json`.
   produk, negara teratas di luar UK, jam puncak).
 - `sql/queries.sql` berisi 12 query sales performance dan sudah dijalankan
   terhadap tabel `sales_clean` hasil `scripts/load_to_sqlite.py` tanpa error.
+- Kit Power BI Tahap 3: 11 dari 11 measure di `powerbi/measure_verification.csv`
+  dihitung ulang dari `fact_sales` dan cocok persis dengan `findings.json`
+  (selisih 0).
 
 Cara reproduksi:
 
@@ -138,11 +143,16 @@ python scripts/load_to_sqlite.py /tmp/ecommerce_sales.db
 sqlite3 /tmp/ecommerce_sales.db < sql/queries.sql
 ```
 
-## Rencana dashboard Power BI (Tahap 3)
+## Dashboard Power BI (Tahap 3)
 
 Star schema: `fact_sales` (grain satu baris transaksi bersih) dengan
 `dim_product` (StockCode, Description modus), `dim_customer`, `dim_country`,
-dan `dim_date` (tanggal, bulan, hari, jam).
+dan `dim_date` (tanggal, bulan, hari, jam). File `fact_sales` dipecah per tahun
+(`fact_sales_2009.csv`, `fact_sales_2010.csv`, `fact_sales_2011.csv`) supaya
+tiap file tetap ringan; total 996.548 baris dan revenue GBP 20.476.260,43,
+cocok dengan data bersih. Rakit dashboard mengikuti `powerbi/build_guide.md`
+dan `powerbi/dashboard_layout.md`; 13 measure DAX ada di
+`powerbi/measures_dax.md`.
 
 1. **Halaman 1, Executive Sales Overview:** card total revenue, orders, AOV,
    basket size, dan customers; tren revenue bulanan; peringatan visual bahwa
@@ -162,6 +172,9 @@ dan `dim_date` (tanggal, bulan, hari, jam).
 ├── README.md                  # dokumen ini
 ├── findings.json              # angka kunci terverifikasi dua cara
 ├── requirements.txt
+├── analysis.ipynb             # notebook analisis lengkap, 24 cell (Tahap 2)
+├── Portofolio-Ecommerce-Sales-Performance.pptx  # deck 10 slide (Tahap 3)
+├── Modul-Ecommerce-Sales-Performance.pdf        # modul belajar 5 halaman (Tahap 3)
 ├── data/
 │   ├── SOURCES.md             # sumber resmi, sitasi, lisensi, daftar file
 │   ├── cleaning_log.json      # hitungan baris per langkah cleaning
@@ -169,14 +182,44 @@ dan `dim_date` (tanggal, bulan, hari, jam).
 │   ├── country_sales.csv      # agregat per negara
 │   ├── top_products.csv       # top 10 produk by revenue
 │   ├── hourly_sales.csv       # agregat per jam
-│   └── weekday_sales.csv      # agregat per hari
+│   ├── weekday_sales.csv      # agregat per hari
+│   └── customer_repeat_summary.csv  # ringkasan repeat purchase (Tahap 2)
 │       (online_retail_ii_clean.csv dibuat lokal oleh clean_data.py,
 │        tidak di-push karena 93,2 MB - lihat .gitignore)
+├── charts/                    # 12 chart Tahap 2
+│   ├── 01_monthly_revenue_trend.png
+│   ├── 02_seasonal_revenue_by_month_year.png
+│   ├── 03_top10_products.png
+│   ├── 04_top_countries_non_uk.png
+│   ├── 05_hourly_pattern.png
+│   ├── 06_weekday_pattern.png
+│   ├── 07_order_value_distribution.png
+│   ├── 08_aov_by_month.png
+│   ├── 09_uk_vs_nonuk_share.png
+│   ├── 10_large_order_concentration.png
+│   ├── 11_repeat_vs_onetime.png
+│   └── 12_heatmap_month_year.png
+├── powerbi/                   # kit Power BI Tahap 3
+│   ├── build_guide.md         # langkah rakit dashboard di Power BI Desktop
+│   ├── dashboard_layout.md    # layout 4 halaman
+│   ├── dashboard_preview_halaman1.png
+│   ├── dim_country.csv        # 43 negara
+│   ├── dim_customer.csv       # 5.878 customer + sentinel 0
+│   ├── dim_date.csv           # 604 tanggal transaksi
+│   ├── dim_product.csv        # 4.917 produk
+│   ├── fact_sales_2009.csv    # 42.989 baris
+│   ├── fact_sales_2010.csv    # 474.483 baris
+│   ├── fact_sales_2011.csv    # 479.076 baris
+│   ├── measure_verification.csv  # 11 measure terverifikasi cocok
+│   └── measures_dax.md        # 13 measure DAX
 ├── scripts/
 │   ├── clean_data.py          # unduhan mentah -> data bersih + cleaning log
 │   ├── analyze.py             # agregasi pandas -> findings.json + CSV agregat
 │   ├── load_to_sqlite.py      # data bersih -> tabel sales_clean (db di luar repo)
-│   └── verify_sqlite.py       # verifikasi independen cara 2 (SQL/SQLite)
+│   ├── verify_sqlite.py       # verifikasi independen cara 2 (SQL/SQLite)
+│   ├── build_charts.py        # membangun 12 chart Tahap 2
+│   ├── make_notebook.py       # membangun analysis.ipynb (Tahap 2)
+│   └── build_stage3.py        # membangun ulang kit Power BI Tahap 3
 └── sql/
     └── queries.sql            # 12 query sales performance
 ```
@@ -193,3 +236,6 @@ dan `dim_date` (tanggal, bulan, hari, jam).
 - 15,15% revenue tanpa Customer ID membatasi cakupan analisis customer.
 - Description memiliki beberapa varian ejaan untuk StockCode yang sama;
   analisis produk dikunci pada StockCode.
+- Dashboard Power BI belum pernah dibuka di Power BI Desktop (dibangun dan
+  diverifikasi numerik di Linux). Pembukaan pertama mengikuti Langkah 4
+  `powerbi/build_guide.md`.
