@@ -1,0 +1,13 @@
+measure,nilai_dari_fact_sales,nilai_findings_tahap1,selisih,status
+Total Revenue,20476260.43,20476260.43,0.0,COCOK
+Total Orders,40077.0,40077,0,COCOK
+Average Order Value,510.92,510.92,0.0,COCOK
+Total Units,11205148.0,11205148,0,COCOK
+Basket Size (unit per order),279.59,279.59,0.0,COCOK
+Total Customers Teridentifikasi,5878.0,5878,0,COCOK
+UK Revenue,17410196.1,17410196.1,0.0,COCOK
+UK Revenue Share %,85.03,85.03,0.0,COCOK
+Revenue Bulan Terbaik (Nov 2011),1503866.78,1503866.78,0.0,COCOK
+Revenue Produk Teratas (22423),330590.32,330590.32,0.0,COCOK
+Revenue Tanpa Customer ID,3101456.18,3101456.18,0.0,COCOK
+Jumlah Baris Fact (invoice x produk),996548.0,,,INFO GRAIN
