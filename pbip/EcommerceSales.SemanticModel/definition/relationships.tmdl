@@ -1,0 +1,19 @@
+relationship 80fb8eb7-b54c-59ca-a898-bf3a7f972242
+	fromColumn: fact_sales.stock_code
+	toColumn: dim_product.stock_code
+	crossFilteringBehavior: oneDirection
+
+relationship 75f72550-0f08-57e6-9073-2fb41e3e73a9
+	fromColumn: fact_sales.customer_id
+	toColumn: dim_customer.customer_id
+	crossFilteringBehavior: oneDirection
+
+relationship 7434cafb-0223-525f-90cb-2eb1c84ff886
+	fromColumn: fact_sales.country
+	toColumn: dim_country.country
+	crossFilteringBehavior: oneDirection
+
+relationship d43473f9-4d6c-5c0f-8ce1-764dd6bef18c
+	fromColumn: fact_sales.invoice_date
+	toColumn: dim_date.date
+	crossFilteringBehavior: oneDirection
