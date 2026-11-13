@@ -1,0 +1,13 @@
+model Model
+	culture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+ref table dim_country
+ref table dim_customer
+ref table dim_date
+ref table dim_product
+ref table fact_sales
+
+ref expression FolderData
