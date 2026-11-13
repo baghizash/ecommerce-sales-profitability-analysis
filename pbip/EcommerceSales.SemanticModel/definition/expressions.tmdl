@@ -1,0 +1,4 @@
+expression FolderData = ```
+		"C:\\PowerBI\\EcommerceSales\\data" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = "Text"]
+		```
+	lineageTag: 49beab9d-05d6-58a0-bc18-d8f970b15bf4
