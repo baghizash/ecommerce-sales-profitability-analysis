@@ -1,0 +1,154 @@
+table fact_sales
+	lineageTag: a6b81c8a-4651-521f-b828-baa257bc2c82
+
+	measure 'Total Revenue' =
+			SUM ( fact_sales[revenue_gbp] )
+		formatString: £#,##0.00
+		lineageTag: f305433b-9233-5099-b1d2-1ce38d401d7e
+
+	measure 'Total Orders' =
+			DISTINCTCOUNT ( fact_sales[invoice] )
+		formatString: #,##0
+		lineageTag: e9470963-2665-5149-8550-41aba2454af1
+
+	measure 'Total Units' =
+			SUM ( fact_sales[quantity] )
+		formatString: #,##0
+		lineageTag: d16dcfdc-1403-572b-8413-c85a1b2209db
+
+	measure 'Total Customers' = ```
+			CALCULATE (
+			    DISTINCTCOUNT ( fact_sales[customer_id] ),
+			    fact_sales[customer_id] <> 0
+			)
+			```
+		formatString: #,##0
+		lineageTag: c151b286-36e5-5a6a-9948-d6c3c9b4ab85
+
+	measure 'Average Order Value' =
+			DIVIDE ( [Total Revenue], [Total Orders] )
+		formatString: £#,##0.00
+		lineageTag: 9c192f3f-8c50-5cc1-ae30-7e0f0a37e2db
+
+	measure 'Basket Size' =
+			DIVIDE ( [Total Units], [Total Orders] )
+		formatString: #,##0.00
+		lineageTag: 0d1a3aae-d507-56b8-9c0b-8dbf5526ea5f
+
+	measure 'UK Revenue' =
+			CALCULATE ( [Total Revenue], dim_country[is_uk] = "Ya" )
+		formatString: £#,##0.00
+		lineageTag: ed65f71d-efcc-55bc-97d8-f7762f51624d
+
+	measure 'UK Revenue Share' =
+			DIVIDE ( [UK Revenue], [Total Revenue] )
+		formatString: 0.00\%
+		lineageTag: 793dcd9e-165c-595a-8273-d886c89663f8
+
+	measure 'Revenue Tanpa Customer ID' =
+			CALCULATE ( [Total Revenue], dim_customer[is_identified] = "Tidak" )
+		formatString: £#,##0.00
+		lineageTag: 716fdf80-ea87-5c24-ad3b-bfc7130f0e95
+
+	measure 'Orders Tanpa Customer ID' =
+			CALCULATE ( [Total Orders], dim_customer[is_identified] = "Tidak" )
+		formatString: #,##0
+		lineageTag: ed404d17-86bf-597a-8b43-d68fb6c80e6e
+
+	measure 'Repeat Customers' = ```
+			CALCULATE (
+			    COUNTROWS ( dim_customer ),
+			    FILTER (
+			        dim_customer,
+			        dim_customer[customer_id] <> 0
+			            && CALCULATE ( [Total Orders] ) >= 2
+			    )
+			)
+			```
+		formatString: #,##0
+		lineageTag: ba11cfa6-f399-50a9-be5b-d4d0b4e7522e
+
+	measure 'Repeat Customer Share' =
+			DIVIDE ( [Repeat Customers], [Total Customers] )
+		formatString: 0.00\%
+		lineageTag: 2b80e821-5321-5ea4-a899-d40ff703e466
+
+	measure 'Top 10 Product Share' = ```
+			VAR Top10Revenue =
+			    SUMX (
+			        TOPN ( 10, VALUES ( dim_product[stock_code] ), [Total Revenue], DESC ),
+			        [Total Revenue]
+			    )
+			RETURN
+			    DIVIDE ( Top10Revenue, [Total Revenue] )
+			```
+		formatString: 0.00\%
+		lineageTag: 52d08553-475e-5b40-94c5-633f2d8699f3
+
+	column invoice
+		dataType: string
+		lineageTag: 055d67d7-4768-5a86-b589-68070dcbcc6d
+		summarizeBy: none
+		sourceColumn: invoice
+
+	column stock_code
+		dataType: string
+		lineageTag: 0c564072-6933-5d00-ba8b-45c0fbd6e415
+		summarizeBy: none
+		sourceColumn: stock_code
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: b46f4b5a-92e1-5182-a138-a8df8f526be8
+		summarizeBy: none
+		sourceColumn: customer_id
+
+	column country
+		dataType: string
+		lineageTag: c1e2996e-628b-5e6c-9169-0111fdbbd2d3
+		summarizeBy: none
+		sourceColumn: country
+
+	column invoice_date
+		dataType: dateTime
+		lineageTag: bac4e40d-d9f8-5ed5-b7ba-28398c672772
+		summarizeBy: none
+		sourceColumn: invoice_date
+
+	column hour
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c1e61b8-772b-57a8-befc-1a2b717efedf
+		summarizeBy: none
+		sourceColumn: hour
+
+	column quantity
+		dataType: int64
+		formatString: #,##0
+		lineageTag: e101843b-5397-554c-b658-fd65607f53ad
+		summarizeBy: none
+		sourceColumn: quantity
+
+	column revenue_gbp
+		dataType: double
+		formatString: #,##0.00
+		lineageTag: d2c6233e-a4a2-556a-9492-ac2a4c1c0f7a
+		summarizeBy: none
+		sourceColumn: revenue_gbp
+
+	partition fact_sales = m
+		mode: import
+		source = ```
+				let
+					S2009 = Csv.Document(File.Contents(FolderData & "\fact_sales_2009.csv"), [Delimiter = ",", Columns = 8, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+					H2009 = Table.PromoteHeaders(S2009, [PromoteAllScalars = true]),
+					S2010 = Csv.Document(File.Contents(FolderData & "\fact_sales_2010.csv"), [Delimiter = ",", Columns = 8, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+					H2010 = Table.PromoteHeaders(S2010, [PromoteAllScalars = true]),
+					S2011 = Csv.Document(File.Contents(FolderData & "\fact_sales_2011.csv"), [Delimiter = ",", Columns = 8, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+					H2011 = Table.PromoteHeaders(S2011, [PromoteAllScalars = true]),
+					Combined = Table.Combine({H2009, H2010, H2011}),
+					ChangedType = Table.TransformColumnTypes(Combined, {{"invoice", type text}, {"stock_code", type text}, {"customer_id", Int64.Type}, {"country", type text}, {"invoice_date", type date}, {"hour", Int64.Type}, {"quantity", Int64.Type}, {"revenue_gbp", type number}})
+				in
+					ChangedType
+				```
