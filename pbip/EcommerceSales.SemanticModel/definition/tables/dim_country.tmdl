@@ -1,0 +1,25 @@
+table dim_country
+	lineageTag: fa564350-7896-5f0e-908a-1d747b69593d
+
+	column country
+		dataType: string
+		lineageTag: 183e4235-8d7c-5f77-9e65-5e808f1dce97
+		summarizeBy: none
+		sourceColumn: country
+
+	column is_uk
+		dataType: string
+		lineageTag: 7fae0160-6c7e-5285-89b2-60d680f59124
+		summarizeBy: none
+		sourceColumn: is_uk
+
+	partition dim_country = m
+		mode: import
+		source = ```
+				let
+					Source = Csv.Document(File.Contents(FolderData & "\dim_country.csv"), [Delimiter = ",", Columns = 2, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+					PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{"country", type text}, {"is_uk", type text}})
+				in
+					ChangedType
+				```
