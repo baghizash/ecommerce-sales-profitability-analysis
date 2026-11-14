@@ -1,0 +1,31 @@
+table dim_product
+	lineageTag: e9c3f7d6-71bd-5f50-a4ab-0cab79769833
+
+	column stock_code
+		dataType: string
+		lineageTag: 5789f5d7-002b-5a86-9ad8-a3bbe53b7e2c
+		summarizeBy: none
+		sourceColumn: stock_code
+
+	column description
+		dataType: string
+		lineageTag: bc677f98-8d88-5884-8012-393d2ba769d1
+		summarizeBy: none
+		sourceColumn: description
+
+	column is_merchandise
+		dataType: string
+		lineageTag: 31b82ce9-69ca-5d28-9c94-2d2fea58d8de
+		summarizeBy: none
+		sourceColumn: is_merchandise
+
+	partition dim_product = m
+		mode: import
+		source = ```
+				let
+					Source = Csv.Document(File.Contents(FolderData & "\dim_product.csv"), [Delimiter = ",", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+					PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{"stock_code", type text}, {"description", type text}, {"is_merchandise", type text}})
+				in
+					ChangedType
+				```
