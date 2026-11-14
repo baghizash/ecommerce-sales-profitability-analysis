@@ -1,0 +1,26 @@
+table dim_customer
+	lineageTag: a989180d-0d8e-5638-8d66-4e94571ae374
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c03973a-0da2-5260-b47e-a21f68657c6f
+		summarizeBy: none
+		sourceColumn: customer_id
+
+	column is_identified
+		dataType: string
+		lineageTag: 07140c85-cb72-5538-b489-fec05e7210a0
+		summarizeBy: none
+		sourceColumn: is_identified
+
+	partition dim_customer = m
+		mode: import
+		source = ```
+				let
+					Source = Csv.Document(File.Contents(FolderData & "\dim_customer.csv"), [Delimiter = ",", Columns = 2, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+					PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+					ChangedType = Table.TransformColumnTypes(PromotedHeaders, {{"customer_id", Int64.Type}, {"is_identified", type text}})
+				in
+					ChangedType
+				```
