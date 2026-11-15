@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "v02Sub",
+  "position": {
+    "x": 0,
+    "y": 52,
+    "z": 1,
+    "height": 30,
+    "width": 880,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Periode data: 1 Des 2009 – 9 Des 2011 · Sumber: UCI Online Retail II",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": 12,
+                      "bold": false
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
