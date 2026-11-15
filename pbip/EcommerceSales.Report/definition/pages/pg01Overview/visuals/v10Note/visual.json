@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "v10Note",
+  "position": {
+    "x": 800,
+    "y": 238,
+    "z": 9,
+    "height": 300,
+    "width": 460,
+    "tabOrder": 9
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Catatan: UK menyumbang 85,03% revenue dan repeat customer 72,39%. Bulan terbaik Nov 2011: £1.503.866,78. Desember 2011 parsial (data berakhir 9 Des 2011). Karakter data wholesale (B2B).",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": 13,
+                      "bold": false
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
