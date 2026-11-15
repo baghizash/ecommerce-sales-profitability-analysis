@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "v07Note",
+  "position": {
+    "x": 640,
+    "y": 478,
+    "z": 6,
+    "height": 214,
+    "width": 620,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Catatan: EIRE revenue-nya besar tetapi hanya dari 5 customer — konsentrasi pelanggan tinggi. Ranking produk hanya merchandise (is_merchandise = \"Ya\"); kode ongkir dan penyesuaian seperti POST dan BANK CHARGES dikeluarkan dari ranking.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": 13,
+                      "bold": false
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
