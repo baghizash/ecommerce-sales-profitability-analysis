@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "v06Batas",
+  "position": {
+    "x": 640,
+    "y": 222,
+    "z": 5,
+    "height": 300,
+    "width": 620,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Batas analisis: (1) Dataset tidak punya kolom cost, jadi margin dan profit tidak ditampilkan — profitability dibaca dari kualitas revenue (AOV, basket size, konsentrasi, repeat). (2) Ranking produk hanya merchandise. (3) Desember 2011 parsial (data berakhir 9 Des 2011). (4) Satu baris invoice penyesuaian A563185 — kolom invoice disimpan sebagai teks agar hitungan order tetap 40.077.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": 13,
+                      "bold": false
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
