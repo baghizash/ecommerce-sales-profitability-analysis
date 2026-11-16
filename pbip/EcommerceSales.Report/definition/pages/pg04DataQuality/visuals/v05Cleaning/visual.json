@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "v05Cleaning",
+  "position": {
+    "x": 0,
+    "y": 222,
+    "z": 4,
+    "height": 300,
+    "width": 620,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Aturan cleaning Tahap 1 (dari 1.067.371 baris mentah): duplikat persis dibuang 34.335 baris; invoice batal (awalan C) 19.104; quantity <= 0 dibuang 3.393; price <= 0 dibuang 2.626; hasil 1.007.913 baris bersih. Baris tanpa Customer ID (228.488 baris) tetap disimpan. Fact dashboard diagregasi per invoice x produk: 996.548 baris.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": 13,
+                      "bold": false
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
