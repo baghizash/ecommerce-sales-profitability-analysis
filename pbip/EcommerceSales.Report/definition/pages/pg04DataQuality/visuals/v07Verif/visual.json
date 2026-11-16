@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "v07Verif",
+  "position": {
+    "x": 0,
+    "y": 538,
+    "z": 6,
+    "height": 150,
+    "width": 1260,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Verifikasi measure: 11 dari 11 angka di measure_verification.csv cocok persis dengan findings.json Tahap 1 (selisih 0) — Total Revenue £20.476.260,43; Total Orders 40.077; Average Order Value £510,92; Total Customers 5.878; UK Revenue Share 85,03%.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": 13,
+                      "bold": false
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
