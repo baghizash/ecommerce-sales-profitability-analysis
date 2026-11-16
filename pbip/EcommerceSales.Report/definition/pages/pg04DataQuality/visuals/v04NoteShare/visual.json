@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "v04NoteShare",
+  "position": {
+    "x": 840,
+    "y": 76,
+    "z": 3,
+    "height": 130,
+    "width": 400,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Pangsa revenue tanpa Customer ID: 15,15% dari Total Revenue (£3.101.456,18 dari £20.476.260,43). Baris ini tetap disimpan saat cleaning — membuangnya menghapus 15,15% revenue.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": 13,
+                      "bold": false
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "left"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
